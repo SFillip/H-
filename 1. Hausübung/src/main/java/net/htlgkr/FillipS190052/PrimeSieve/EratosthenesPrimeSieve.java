@@ -14,11 +14,10 @@ public class EratosthenesPrimeSieve implements PrimeSieve {
     public boolean isPrime(int p) {
         boolean[] primes = getAllPrimes();
 
-        if(primes[p]==true)
-        {
+        if (primes[p] == true) {
             return true;
-        }else {
-            return  false;
+        } else {
+            return false;
         }
     }
 
@@ -33,7 +32,24 @@ public class EratosthenesPrimeSieve implements PrimeSieve {
         }
     }
 
-    public boolean[] getAllPrimes() {
+    public void PrintEvenNumbers() {
+        boolean[] primes = getAllPrimes();
+
+        for (int i = 2; i < upperBorder; i++) {
+            if (primes[i] = true) {
+                for(int j=i;j<=upperBorder;i++)
+                {
+                    if(primes[j]==true){
+                        System.out.println(i+j+" summe: "+ i+j +" "+i +" + "+ j);
+                        break;
+                    }
+
+                }
+            }
+        }
+    }
+
+    private boolean[] getAllPrimes() {
         boolean[] primes = new boolean[upperBorder];
 
         for (int i = 1; i < primes.length; i++) {
