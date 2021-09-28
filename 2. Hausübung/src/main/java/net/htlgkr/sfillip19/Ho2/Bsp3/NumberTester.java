@@ -64,6 +64,29 @@ public class NumberTester {
     public void TestFile() {
         for (String line : rows) {
 
+            String[] split = line.split(" ");
+
+            if (split[0].equals("1"))
+            {
+                if (oddTester.testNumber(Integer.parseInt(split[1]))) {
+                    System.out.println("EVEN");
+                } else {
+                    System.out.println("NOT EVEN");
+                }
+            }else if (split[0].equals("2")) {
+                if (printTester.testNumber(Integer.parseInt(split[1]))) {
+                    System.out.println("IS PRIME");
+                } else{
+                    System.out.println("NO PRIME");
+                }
+            }else{
+                if(paindroneTester.testNumber(Integer.parseInt(split(1)))){
+                    System.out.println("PAINDRONE");
+                }else {
+                    System.out.println("NO PAINDRONE");
+                }
+            }
+
         }
     }
 }
