@@ -32,18 +32,18 @@ public class EratosthenesPrimeSieve implements PrimeSieve {
         }
     }
 
-    public void PrintEvenNumbers() {
+    public void printEvenNumbers() {
         boolean[] primes = getAllPrimes();
 
         for (int i = 2; i < upperBorder; i++) {
-            if (primes[i] = true) {
-                for(int j=i;j<=upperBorder;i++)
+            if (primes[i] == true) {
+                for(int j=2;j<=upperBorder;j++)
                 {
-                    if(primes[j]==true){
-                        System.out.println(i+j+" summe: "+ i+j +" "+i +" + "+ j);
+
+                    if(primes[j]==true && ((i+j) % 2) == 0){
+                        System.out.println(i+j+" summe: "+ (i+j) +" = "+i +" + "+ j);
                         break;
                     }
-
                 }
             }
         }
@@ -52,7 +52,7 @@ public class EratosthenesPrimeSieve implements PrimeSieve {
     private boolean[] getAllPrimes() {
         boolean[] primes = new boolean[upperBorder];
 
-        for (int i = 1; i < primes.length; i++) {
+        for (int i = 2; i < primes.length; i++) {
             primes[i] = true;
         }
 
@@ -60,7 +60,7 @@ public class EratosthenesPrimeSieve implements PrimeSieve {
             if (primes[i] == false) {
 
             } else {
-                for (int j = i * i; i < primes.length; j + j) {
+                for (int j = i * i; j < primes.length; j+= i) {
                     primes[j] = false;
                 }
             }
