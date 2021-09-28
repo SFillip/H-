@@ -11,7 +11,7 @@ public class NumberTester {
     private NumberTest paindroneTester;
 
     private int rowCount;
-    private String[]rows;
+    private String[] rows;
 
     public NumberTester(String fileName) {
 
@@ -26,11 +26,27 @@ public class NumberTester {
 
         rowCount = Integer.parseInt(scanner.next());
 
-        rows=new String[rowCount];
+        rows = new String[rowCount];
 
-        for(int i=0;i<rowCount;i++){
-            rows[i]=scanner.next();
+        for (int i = 0; i < rowCount; i++) {
+            rows[i] = scanner.next();
         }
+
+        setOddTester((int n) -> {
+            return (n % 2) != 0;
+        });
+
+        setPrintTester((int n) -> {
+            if (n == 2 || n == 3 || (n % 2) != 0 && (n % 3) != 0) {
+                return true;
+            }
+            return false;
+        });
+
+        setPaindroneTester((int n) -> {
+            Integer i = n;
+            return new StringBuilder(i.toString()).reverse().equals(n.toString());
+        });
     }
 
     public void setOddTester(NumberTest oddTester) {
@@ -46,6 +62,8 @@ public class NumberTester {
     }
 
     public void TestFile() {
+        for (String line : rows) {
 
+        }
     }
 }
