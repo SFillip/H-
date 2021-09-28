@@ -44,8 +44,8 @@ public class NumberTester {
         });
 
         setPaindroneTester((int n) -> {
-            Integer i = n;
-            return new StringBuilder(i.toString()).reverse().equals(n.toString());
+            Integer i=n;
+            return new StringBuilder(i.toString()).reverse().equals(i.toString());
         });
     }
 
@@ -66,23 +66,22 @@ public class NumberTester {
 
             String[] split = line.split(" ");
 
-            if (split[0].equals("1"))
-            {
+            if (split[0].equals("1")) {
                 if (oddTester.testNumber(Integer.parseInt(split[1]))) {
                     System.out.println("EVEN");
                 } else {
                     System.out.println("NOT EVEN");
                 }
-            }else if (split[0].equals("2")) {
+            } else if (split[0].equals("2")) {
                 if (printTester.testNumber(Integer.parseInt(split[1]))) {
                     System.out.println("IS PRIME");
-                } else{
+                } else {
                     System.out.println("NO PRIME");
                 }
-            }else{
-                if(paindroneTester.testNumber(Integer.parseInt(split(1)))){
+            } else {
+                if (paindroneTester.testNumber(Integer.parseInt(split[1]))) {
                     System.out.println("PAINDRONE");
-                }else {
+                } else {
                     System.out.println("NO PAINDRONE");
                 }
             }

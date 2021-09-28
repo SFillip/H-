@@ -1,19 +1,19 @@
 package net.htlgkr.sfillip19.Ho2.Bsp2;
 
-import java.awt.datatransfer.StringSelection;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HalloJavamitForEach {
 
     private ArrayList<String> StringList;
 
     public HalloJavamitForEach(String[] strings) {
-        StringList = Array.asList(strings);
+        StringList=new ArrayList<>();
+        StringList.addAll(Arrays.asList(strings));
     }
 
     public void print() {
-        for (String content : StringLis) {
+        for (String content : StringList) {
             System.out.println(content);
         }
 
