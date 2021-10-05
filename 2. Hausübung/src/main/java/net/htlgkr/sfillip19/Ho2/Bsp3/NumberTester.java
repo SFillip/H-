@@ -33,7 +33,7 @@ public class NumberTester {
         }
 
         setOddTester((int n) -> {
-            return (n % 2) != 0;
+            return (n % 2) == 0;
         });
 
         setPrintTester((int n) -> {
@@ -45,7 +45,7 @@ public class NumberTester {
 
         setPaindroneTester((int n) -> {
             Integer i=n;
-            return new StringBuilder(i.toString()).reverse().equals(i.toString());
+            return new StringBuilder(i.toString()).reverse().toString().equals(i.toString());
         });
     }
 
@@ -64,7 +64,7 @@ public class NumberTester {
     public void TestFile() {
         for (String line : rows) {
 
-            String[] split = line.split(" ");
+            String[] split = line.split(",");
 
             if (split[0].equals("1")) {
                 if (oddTester.testNumber(Integer.parseInt(split[1]))) {
