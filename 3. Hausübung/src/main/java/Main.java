@@ -26,6 +26,5 @@ public class Main {
             weapons.add(tmp);
         }
         weapons.sort((Weapon a,Weapon b) -> {return b.getDamage()-a.getDamage();});
-        weapons.forEach((Weapon a) -> System.out.println(a.getDamage()));
     }
 }
