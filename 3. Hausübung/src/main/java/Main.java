@@ -1,7 +1,9 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -12,28 +14,41 @@ public class Main {
 
         weapons = sortWeapons(weapons);
         weapons = advancedWeaponSort(weapons);
+
+        Printable standartPrinter = (List<Weapon> wp) -> {
+            for (Weapon weapon : wp) {
+                System.out.println(weapon.toString());
+            }
+        };
+
+        Printable tablePrinter = (List<Weapon> wp) -> {
+            for (Weapon weapon : wp) {
+                System.out.println(String.format("|%20s|",weapon.getName())+ String.format("%20s|",weapon.getCombatType().toString())+ String.format("%20s|",weapon.getDamageType().toString())+ String.format("%20d|", weapon.getDamage())+ String.format("%20d|", weapon.getSpeed())+ String.format("%20d|",weapon.getStrength())+String.format("%20d|",weapon.getValue()));
+            }
+        };
+
+        standartPrinter.print(weapons);
+        System.out.println();
+        tablePrinter.print(weapons);
     }
 
     public static ArrayList<Weapon> populate(String filepath) {
         ArrayList<Weapon> weapons = new ArrayList<>();
 
-        Scanner s = null;
-        try {
-            s = new Scanner(new File(filepath));
-        } catch (FileNotFoundException e) {
-            System.out.println("File nicht gefunden");
-            System.exit(0);
+        try (Stream<String> stream = Files.lines(Paths.get(filepath))) {
+            stream.forEach((String line) -> {
+                String[] split = line.split(";");
+
+                if(!split[0].equalsIgnoreCase("name")){
+                    Weapon tmp = new Weapon(split[0], split[1], split[2], Integer.parseInt(split[3]), Integer.parseInt(split[4]), Integer.parseInt(split[5]), Integer.parseInt(split[6]));
+
+                    weapons.add(tmp);
+                }
+            });
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
 
-        s.nextLine();
-        while (s.hasNext()) {
-            String line = s.nextLine();
-            String[] split = line.split(";");
-
-            Weapon tmp = new Weapon(split[0], split[1], split[2], Integer.parseInt(split[3]), Integer.parseInt(split[4]), Integer.parseInt(split[5]), Integer.parseInt(split[6]));
-
-            weapons.add(tmp);
-        }
         return weapons;
     }
 

@@ -6,12 +6,6 @@ public abstract class AbstractCalculator {
     protected CalculationOperation multiply;
     protected CalculationOperation divide;
 
-    public AbstractCalculator(CalculationOperation add,
-                              CalculationOperation subtract,
-                              CalculationOperation multiply,
-                              CalculationOperation divide) {
-    }
-
     public abstract Number add(Number a, Number b)
 
     public abstract Number sub(Number a, Number b);
